@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:login/core/widgets/app_text_form_field.dart';
+
+class FormLogin extends StatefulWidget {
+  const FormLogin({super.key});
+
+  @override
+  State<FormLogin> createState() => _FormLoginState();
+}
+
+final TextEditingController emailController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();
+
+class _FormLoginState extends State<FormLogin> {
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: [
+          AppTextFormField(
+            hintText: 'email',
+            suffixIcon: ,
+            validator: validator,
+            controller: controller,
+          )
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:login/core/theming/app_color.dart';
+import 'package:login/features/login/ui/widgets/form_login.dart';
+
+class ShowPassword extends StatefulWidget {
+  final bool isShowPassword;
+  final VoidCallback onPressed;
+
+  const ShowPassword({
+    super.key,
+    required this.isShowPassword,
+    required this.onPressed,
+  });
+
+  @override
+  State<ShowPassword> createState() => _ShowPasswordState();
+}
+
+class _ShowPasswordState extends State<ShowPassword> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: widget.onPressed,
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (child, animation) {
+          return ScaleTransition(
+            scale: animation,
+            child: child,
+          );
+        },
+        child: FaIcon(
+          isShowPassword
+              ? FontAwesomeIcons.solidEye
+              : FontAwesomeIcons.solidEyeSlash,
+          key: ValueKey<bool>(isShowPassword),
+          size: 25,
+          color: AppColors.defaultColor,
+        ),
+      ),
+    );
+  }
+}
